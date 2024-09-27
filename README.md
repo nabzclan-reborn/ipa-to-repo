@@ -15,7 +15,7 @@ https://cdn.nabzclan.vip/ipa-to-repo
 ## 💭 Test
 
 ```bash
-GET https://cdn.nabzclan.vip/ipa-to-repo?ipa_url=https://cloud.nabzclan.vip/file/5wc/P12Cracker_(Beta)-nabzclan.vip_1.0.ipa
+https://cdn.nabzclan.vip/ipa-to-repo?ipa_url=https://cloud.nabzclan.vip/file/5wc/P12Cracker_(Beta)-nabzclan.vip_1.0.ipa
 ```
 
 ## 🛠️ How to Use the Endpoint
