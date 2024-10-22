@@ -30,8 +30,8 @@ You can use the following example to make a request to the endpoint using cURL, 
 
 #### Example Request
 
-```bash
-GET https://cdn.nabzclan.vip/ipa-to-repo?ipa_url=https://example.com/path/to/yourfile.ipa
+```text
+ https://cdn.nabzclan.vip/ipa-to-repo?ipa_url=https://example.com/path/to/yourfile.ipa
 ```
 
 ### **Step 3: Obtain the Repository JSON**
