@@ -8,6 +8,8 @@ The endpoint extracts necessary metadata from your IPA file and generates a repo
 
 ## 📖 API Status
 
+[Visit Status Page](https://uptime.nabzclan.vip/status/public-apis)
+
 ![Status Badge](https://uptime.nabzclan.vip/api/badge/4/status?style=plastic)
 
 
