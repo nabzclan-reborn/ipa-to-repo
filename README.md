@@ -6,6 +6,11 @@ This guide will help you convert your IPA file into a ready-to-use repository an
 
 The endpoint extracts necessary metadata from your IPA file and generates a repository JSON structure, which you can add to your iOS app signer of choice to make the app available for easy sideloading.
 
+## 📖 API Status
+
+![Status Badge](https://uptime.nabzclan.vip/api/badge/4/status?style=plastic)
+
+
 ## 🌐 Endpoint URL
 
 ```
