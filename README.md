@@ -30,7 +30,7 @@ https://public-api.nabzclan.vip/v1/ipa-to-repo
 ## 💭 Test
 
 ```bash
-https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https://cloud.nabzclan.vip/file/5wc/P12Cracker_(Beta)-nabzclan.vip_1.0.ipa
+https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https://cdn.nabzclan.vip/public/ipas/demo/keysystem/Gbox-NoTracking-NabzClan.vip_5.7.3_keysystem-demo.ipa
 ```
 
 ## 🛠️ How to Use the Endpoint
