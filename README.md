@@ -2,6 +2,14 @@
 
 This guide will help you convert your IPA file into a ready-to-use repository and integrate it with iOS app signers like AltStore, Scarlet, or Esign and more.
 
+## 🆕 NEW CHANGES
+
+- for faster reponses we now cache
+- rewritten in node js
+- new paramaters (will be documented soon)
+- faster server
+- nothing new (nothing is logged everything is deleted after 10 mins)
+
 ## 📌 Overview
 
 The endpoint extracts necessary metadata from your IPA file and generates a repository JSON structure, which you can add to your iOS app signer of choice to make the app available for easy sideloading.
@@ -131,6 +139,7 @@ Follow the steps below to add the generated repository to popular iOS app signer
 
 - Always ensure your IPA URL is a **direct download link** (no redirects or authentication).
 - Some cloud storage services (e.g., Google Drive, Dropbox) might not provide direct URLs; you may need to adjust sharing settings to generate a valid direct link.
+- nothing is logged after 10 mins of each submited url 
 
 ## 🛠 Troubleshooting
 
