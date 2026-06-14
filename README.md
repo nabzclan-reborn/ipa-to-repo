@@ -8,11 +8,13 @@ The endpoint extracts necessary metadata from your IPA file and generates a repo
 
 ## ⚠️ Warning
 
-We’ve moved this endpoint to a new subdomain. Please update your applications to use the current endpoint.
+- We’ve moved this endpoint to a new domain. Please update your applications to use the current endpoint.
+
+- Heads up nabzclan banned users will be blocked from using this endpoint - users can appeal a ban here: [https://appeal-ban.nabzclan.vip](https://appeal-ban.nabzclan.vip)
 
 ## 📝 Docs (NEW)
 
-[https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo](https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo)
+[https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo](https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo) (new docs coming soon)
 
 ## 📖 API Status
 
@@ -24,13 +26,13 @@ We’ve moved this endpoint to a new subdomain. Please update your applications 
 ## 🌐 Endpoint URL
 
 ```
-https://public-api.nabzclan.vip/v1/ipa-to-repo
+https://ipa-to-repo.sidelix.vip
 ```
 
 ## 💭 Test
 
 ```bash
-https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https://cdn.nabzclan.vip/public/ipas/demo/keysystem/Gbox-NoTracking-NabzClan.vip_5.7.3_keysystem-demo.ipa
+https://ipa-to-repo.sidelix.vip/?ipa_url=https://cloud.nabzclan.vip/api/cloud/file/cf_19ec5212920b510389
 ```
 
 ## 🛠️ How to Use the Endpoint
@@ -46,7 +48,7 @@ You can use the following example to make a request to the endpoint using cURL, 
 #### Example Request
 
 ```text
- https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https://example.com/path/to/yourfile.ipa
+ https://ipa-to-repo.sidelix.vip/?ipa_url=https://example.com/path/to/yourfile.ipa
 ```
 
 ### **Step 3: Obtain the Repository JSON**
@@ -59,7 +61,7 @@ The endpoint will return a JSON response containing your IPA's metadata formatte
 {
   "name": "IPA TO Repo - YourAppName",
   "identifier": "org.repotoipa.repo-yourappname",
-  "sourceURL": "https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa",
+  "sourceURL": "https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa",
   "iconURL": "https://cdn.nabzclan.vip/imgs/logo/logo_400x400.jpg",
   "website": "https://apps.nabzclan.vip",
   "subtitle": "Find more apps on the nabzclan - ipa library",
@@ -98,7 +100,7 @@ Follow the steps below to add the generated repository to popular iOS app signer
 2. Go to **Sources** and tap on the **+** icon to add a new source.
 3. **Enter the `sourceURL`** from the JSON response as the URL:
    ```
-   https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
+   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
    ```
 4. Tap **Add** and wait for Scarlet to fetch the repository details.
 5. Once added, your app should appear under the available apps list in Scarlet.
@@ -109,7 +111,7 @@ Follow the steps below to add the generated repository to popular iOS app signer
 2. Navigate to the **Sources** tab and tap the **+** button.
 3. Enter the `sourceURL`:
    ```
-   https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
+   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
    ```
 4. Tap **Add Source** and allow AltStore to fetch the repository details.
 5. The app will now be listed in AltStore, and you can sideload it directly.
@@ -120,7 +122,7 @@ Follow the steps below to add the generated repository to popular iOS app signer
 2. Go to **Repo** and tap on the **+** icon to add a new repository.
 3. Paste the `sourceURL`:
    ```
-   https://public-api.nabzclan.vip/v1/ipa-to-repo/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
+   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
    ```
 4. Tap **Add** and wait for Esign to load the apps.
 5. Your app should now be visible and ready for installation.
