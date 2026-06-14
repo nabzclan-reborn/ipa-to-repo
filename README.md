@@ -32,7 +32,7 @@ https://ipa-to-repo.sidelix.vip
 ## 💭 Test
 
 ```bash
-https://ipa-to-repo.sidelix.vip/?ipa_url=https://cloud.nabzclan.vip/api/cloud/file/cf_19ec5212920b510389
+https://ipa-to-repo.sidelix.vip/?ipa_url=https://cloud-s3.nabzclan.vip/nabzclan-public-cdn-stuff/GBox_v6.0.2.ipa
 ```
 
 ## 🛠️ How to Use the Endpoint
