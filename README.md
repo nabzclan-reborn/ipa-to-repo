@@ -163,21 +163,6 @@ GET https://ipa-to-repo.sidelix.vip/health
 
 ---
 
-## ⚙️ How It Works
-
-1. **Ban check** — client IP is verified against the Nabzclan ban system before any work is done
-2. **Cache check** — if this exact URL was requested in the last 10 minutes, return instantly from SQLite
-3. **HEAD request** — check file size and whether the server supports range requests
-4. **Range request** (last 65KB) — read the ZIP central directory to locate file offsets
-5. **Range request** — fetch only the `Info.plist` bytes (~5–20KB)
-6. **Range request** — fetch only the icon bytes (~50–150KB)
-7. Result and icon saved — cached for 10 minutes then permanently deleted
-
-Total data fetched per new request: **~200KB** regardless of IPA size.  
-If the host doesn't support range requests, the full IPA is downloaded as a fallback.
-
----
-
 ## 🛠 Troubleshooting
 
 | Issue | Fix |
