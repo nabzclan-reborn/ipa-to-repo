@@ -21,7 +21,7 @@ https://ipa-to-repo.sidelix.vip
 
 - Nabzclan banned users are blocked from this endpoint — appeal here: [https://appeal-ban.nabzclan.vip](https://appeal-ban.nabzclan.vip)
 - IPA URLs must be **publicly accessible direct download links** — no auth, no login redirects
-- Cloud storage links (Google Drive, Dropbox defaults) usually don't work — adjust sharing settings to get a raw direct link
+- Cloud storage links (Google Drive, Dropbox defaults) usually don't work — adjust sharing settings to get a raw direct link you can use [https://cloud.nabzclan.vip](https://cloud.nabzclan.vip)
 
 ## 📖 API Status
 
@@ -155,12 +155,9 @@ GET https://ipa-to-repo.sidelix.vip/health
 {
   "status": "ok",
   "cached_entries": 42,
-  "icons_dir": "/www/wwwroot/ipa-to-repo.sidelix.vip/icons",
-  "db_path": "/www/wwwroot/ipa-to-repo.sidelix.vip/cache.db",
   "uptime_secs": 86400
 }
 ```
-
 ---
 
 ## 🛠 Troubleshooting
