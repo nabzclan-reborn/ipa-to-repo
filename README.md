@@ -1,28 +1,27 @@
-# 📦 IPA to Repo Integration Guide
+# 📦 IPA to Repo
 
-This guide will help you convert your IPA file into a ready-to-use repository and integrate it with iOS app signers like AltStore, Scarlet, or Esign and more.
+Convert any IPA download URL into a ready-to-use repository JSON for iOS app signers like AltStore, Scarlet, Esign, and more.
 
-## 🆕 NEW CHANGES
+## 🆕 What's New
 
-- for faster reponses we now cache
-- rewritten in node js
-- new paramaters (will be documented soon)
-- faster server
-- nothing new (nothing is logged everything is deleted after 10 mins)
+- **No more Python** — fully rewritten in Node.js
+- **Fast responses** — uses HTTP range requests to pull only the metadata we need (~200KB) instead of downloading the full IPA
+- **Smart caching** — results cached for 10 minutes; same URL returns instantly on repeat requests
+- **Icon hosting** — app icons extracted and served directly as a URL, no more base64 blobs
+- **Production error codes** — every failure returns a structured error with a stable code
+- **Nothing stored permanently** — all cached data and icons are automatically deleted after 10 minutes
 
-## 📌 Overview
+## 🌐 Endpoint
 
-The endpoint extracts necessary metadata from your IPA file and generates a repository JSON structure, which you can add to your iOS app signer of choice to make the app available for easy sideloading.
+```
+https://ipa-to-repo.sidelix.vip
+```
 
-## ⚠️ Warning
+## ⚠️ Important
 
-- We’ve moved this endpoint to a new domain. Please update your applications to use the current endpoint.
-
-- Heads up nabzclan banned users will be blocked from using this endpoint - users can appeal a ban here: [https://appeal-ban.nabzclan.vip](https://appeal-ban.nabzclan.vip)
-
-## 📝 Docs (NEW)
-
-[https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo](https://public-apis.nabzclan.vip/hc/articles/1/2/2/ipa-to-repo) (new docs coming soon)
+- Nabzclan banned users are blocked from this endpoint — appeal here: [https://appeal-ban.nabzclan.vip](https://appeal-ban.nabzclan.vip)
+- IPA URLs must be **publicly accessible direct download links** — no auth, no login redirects
+- Cloud storage links (Google Drive, Dropbox defaults) usually don't work — adjust sharing settings to get a raw direct link
 
 ## 📖 API Status
 
@@ -30,52 +29,39 @@ The endpoint extracts necessary metadata from your IPA file and generates a repo
 
 ![Status Badge](https://uptime.nabzclan.vip/api/badge/4/status?style=plastic)
 
+---
 
-## 🌐 Endpoint URL
+## 🛠️ Usage
+
+### Request
 
 ```
-https://ipa-to-repo.sidelix.vip
+GET https://ipa-to-repo.sidelix.vip/?ipa_url=<your_ipa_url>
 ```
 
-## 💭 Test
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `ipa_url` | ✅ | Direct download URL to a `.ipa` file |
 
-```bash
+### Test
+
+```
 https://ipa-to-repo.sidelix.vip/?ipa_url=https://cloud-s3.nabzclan.vip/nabzclan-public-cdn-stuff/GBox_v6.0.2.ipa
 ```
 
-## 🛠️ How to Use the Endpoint
-
-### **Step 1: Provide Your IPA URL**
-
-Ensure you have a direct download link to your IPA file. The URL must be publicly accessible.
-
-### **Step 2: Make a Request**
-
-You can use the following example to make a request to the endpoint using cURL, your browser, or any HTTP client.
-
-#### Example Request
-
-```text
- https://ipa-to-repo.sidelix.vip/?ipa_url=https://example.com/path/to/yourfile.ipa
-```
-
-### **Step 3: Obtain the Repository JSON**
-
-The endpoint will return a JSON response containing your IPA's metadata formatted as a repository.
-
-#### Example JSON Response
+### Example Response
 
 ```json
 {
   "name": "IPA TO Repo - YourAppName",
-  "identifier": "org.repotoipa.repo-yourappname",
-  "sourceURL": "https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa",
-  "iconURL": "https://cdn.nabzclan.vip/imgs/logo/logo_400x400.jpg",
-  "website": "https://apps.nabzclan.vip",
-  "subtitle": "Find more apps on the nabzclan - ipa library",
+  "identifier": "vip.sidelix.ipa-to-repo-yourappname",
+  "sourceURL": "https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fyourfile.ipa",
+  "iconURL": "https://ipa-to-repo.sidelix.vip/imgs/logo/logo_400x400.jpg",
+  "website": "https://sidelix.vip",
+  "subtitle": "Sidelix IPA Repo — install any IPA directly on your device",
   "META": {
     "repoName": "IPA TO Repo - YourAppName",
-    "repoIcon": "https://cdn.nabzclan.vip/imgs/logo/logo_400x400.jpg"
+    "repoIcon": "https://ipa-to-repo.sidelix.vip/imgs/logo/logo_400x400.jpg"
   },
   "apps": [
     {
@@ -84,68 +70,126 @@ The endpoint will return a JSON response containing your IPA's metadata formatte
       "bundleID": "com.example.yourapp",
       "bundleIdentifier": "com.example.yourapp",
       "version": "1.0.0",
-      "versionDate": "2024-09-27",
-      "fullDate": "20240927123456",
+      "versionDate": "2026-06-16",
+      "fullDate": "20260616120000",
       "size": 12345678,
-      "down": "https://example.com/path/to/yourfile.ipa",
-      "downloadURL": "https://example.com/path/to/yourfile.ipa",
+      "down": "https://example.com/yourfile.ipa",
+      "downloadURL": "https://example.com/yourfile.ipa",
       "developerName": "",
       "localizedDescription": "Repo to install the YourAppName app",
-      "icon": "data:image/png;base64,...",
-      "iconURL": "data:image/png;base64,..."
+      "icon": "https://ipa-to-repo.sidelix.vip/icons/a3f8c2...png",
+      "iconURL": "https://ipa-to-repo.sidelix.vip/icons/a3f8c2...png"
     }
   ]
 }
 ```
 
+---
+
 ## 📲 Adding to iOS App Signers
 
-Follow the steps below to add the generated repository to popular iOS app signers.
+Use the `sourceURL` from the JSON response as the repo URL in your signer.
 
-### 🔵 **Scarlet**
+### 🔵 Scarlet
 
-1. **Open Scarlet** on your iOS device.
-2. Go to **Sources** and tap on the **+** icon to add a new source.
-3. **Enter the `sourceURL`** from the JSON response as the URL:
-   ```
-   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
-   ```
-4. Tap **Add** and wait for Scarlet to fetch the repository details.
-5. Once added, your app should appear under the available apps list in Scarlet.
+1. Open **Scarlet** → **Sources** → tap **+**
+2. Paste the `sourceURL` and tap **Add**
+3. Your app will appear in the available apps list
 
-### 🟢 **AltStore**
+### 🟢 AltStore
 
-1. Open **AltStore** on your iOS device.
-2. Navigate to the **Sources** tab and tap the **+** button.
-3. Enter the `sourceURL`:
-   ```
-   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
-   ```
-4. Tap **Add Source** and allow AltStore to fetch the repository details.
-5. The app will now be listed in AltStore, and you can sideload it directly.
+1. Open **AltStore** → **Sources** tab → tap **+**
+2. Paste the `sourceURL` and tap **Add Source**
+3. The app will be listed and ready to sideload
 
-### 🔴 **Esign**
+### 🔴 Esign
 
-1. Open the **Esign** app on your iOS device.
-2. Go to **Repo** and tap on the **+** icon to add a new repository.
-3. Paste the `sourceURL`:
-   ```
-   https://ipa-to-repo.sidelix.vip/?ipa_url=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Fyourfile.ipa
-   ```
-4. Tap **Add** and wait for Esign to load the apps.
-5. Your app should now be visible and ready for installation.
-
-## ⚠️ Important Tips
-
-- Always ensure your IPA URL is a **direct download link** (no redirects or authentication).
-- Some cloud storage services (e.g., Google Drive, Dropbox) might not provide direct URLs; you may need to adjust sharing settings to generate a valid direct link.
-- nothing is logged after 10 mins of each submited url 
-
-## 🛠 Troubleshooting
-
-- **Invalid URL Error**: Ensure that the `ipa_url` parameter is a valid, accessible URL.
-- **Metadata Fallbacks**: If your IPA file doesn’t have all the required metadata, the system will use default values.
+1. Open **Esign** → **Repo** → tap **+**
+2. Paste the `sourceURL` and tap **Add**
+3. Your app will be visible and ready to install
 
 ---
 
-**Disclaimer**: This service is intended for legal use only. Ensure that you have the rights to distribute any IPA files you upload. Unauthorized distribution of IPA files may violate copyright laws.
+## ❌ Errors
+
+All errors return a consistent JSON shape:
+
+```json
+{
+  "error": {
+    "code": "IPA_103",
+    "status": 502,
+    "message": "Remote server returned an error",
+    "detail": "HTTP 403 — https://example.com/yourfile.ipa",
+    "timestamp": "2026-06-16T12:00:00.000Z"
+  }
+}
+```
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| `IPA_001` | 400 | Invalid or missing `ipa_url` parameter |
+| `IPA_002` | 403 | Access to this service has been restricted |
+| `IPA_101` | 502 | Too many redirects following the IPA URL |
+| `IPA_102` | 504 | IPA download timed out |
+| `IPA_103` | 502 | Remote server returned an HTTP error |
+| `IPA_104` | 502 | Network error contacting the IPA server |
+| `IPA_105` | 422 | Remote file is empty |
+| `IPA_106` | 502 | Server did not return a Content-Length header |
+| `IPA_201` | 422 | File is not a valid ZIP/IPA archive |
+| `IPA_202` | 422 | `Info.plist` not found inside the IPA |
+| `IPA_203` | 422 | Failed to parse `Info.plist` |
+| `IPA_204` | 422 | IPA is missing required metadata (name, bundle ID, or version) |
+| `IPA_301` | 500 | Failed to save app icon |
+| `IPA_500` | 500 | Unexpected internal error |
+
+---
+
+## 🔍 Health Check
+
+```
+GET https://ipa-to-repo.sidelix.vip/health
+```
+
+```json
+{
+  "status": "ok",
+  "cached_entries": 42,
+  "icons_dir": "/www/wwwroot/ipa-to-repo.sidelix.vip/icons",
+  "db_path": "/www/wwwroot/ipa-to-repo.sidelix.vip/cache.db",
+  "uptime_secs": 86400
+}
+```
+
+---
+
+## ⚙️ How It Works
+
+1. **Ban check** — client IP is verified against the Nabzclan ban system before any work is done
+2. **Cache check** — if this exact URL was requested in the last 10 minutes, return instantly from SQLite
+3. **HEAD request** — check file size and whether the server supports range requests
+4. **Range request** (last 65KB) — read the ZIP central directory to locate file offsets
+5. **Range request** — fetch only the `Info.plist` bytes (~5–20KB)
+6. **Range request** — fetch only the icon bytes (~50–150KB)
+7. Result and icon saved — cached for 10 minutes then permanently deleted
+
+Total data fetched per new request: **~200KB** regardless of IPA size.  
+If the host doesn't support range requests, the full IPA is downloaded as a fallback.
+
+---
+
+## 🛠 Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| `IPA_001` | Make sure `ipa_url` starts with `http://` or `https://` and is URL-encoded |
+| `IPA_002` | Your access has been restricted — [appeal here](https://appeal-ban.nabzclan.vip) |
+| `IPA_103` / `IPA_104` | Your IPA host may be blocking requests — test the URL in a browser first |
+| `IPA_201` | The URL may point to an HTML page or redirect rather than an actual IPA |
+| `IPA_202` | The IPA may be malformed or missing its `Payload/` folder structure |
+| Icon not showing | IPA may use an asset catalog (`.car`) for icons — not extractable; default icon used instead |
+| Slow first response | First request fetches live from the source. Same URL within 10 minutes is instant |
+
+---
+
+**Disclaimer**: This service is intended for legal use only. Ensure you have the rights to distribute any IPA files you use with this service. Unauthorized distribution of IPA files may violate copyright laws.
